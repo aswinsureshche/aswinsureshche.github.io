@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; script-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>ASL recognition app · Aswin Suresh</title>
+<meta name="description" content="Real-time American Sign Language recognition from live video with a custom YOLOv8 model, built for the Congressional App Challenge and tested with the Deaf community.">
+<meta name="theme-color" content="#151a26">
+<link rel="canonical" href="https://aswinsuresh.us.com/asl/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:type" content="profile">
+<meta property="og:title" content="ASL recognition app · Aswin Suresh">
+<meta property="og:description" content="Real-time American Sign Language recognition from live video with a custom YOLOv8 model, built for the Congressional App Challenge and tested with the Deaf community.">
+<meta property="og:url" content="https://aswinsuresh.us.com/asl/">
+<meta property="og:image" content="https://aswinsuresh.us.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Aswin Suresh, Cybersecurity. Detection engineering and cloud security.">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" href="/fonts/newsreader.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/public-sans.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-github" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></symbol>
+  <symbol id="i-linkedin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></symbol>
+  <symbol id="i-file" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M12 18v-6"/><path d="m9 15 3 3 3-3"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+</svg>
+
+<header class="band">
+  <div class="wrap">
+    <div class="mast">
+      <a class="mark" href="/">Aswin Suresh</a>
+      <nav class="tabs" aria-label="Site">
+        <a href="/">Overview</a>
+        <a href="/soc/">SOC<span class="long"> lab</span></a>
+        <a href="/cloud/">Cloud<span class="long"> lab</span></a>
+        <a href="/asl/" aria-current="page">ASL<span class="long"> app</span></a>
+        <a href="/experience/">Experience</a>
+      </nav>
+      <a class="mast-cta" href="/Aswin_Suresh_Resume.pdf" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-file"/></svg>Résumé<span class="sr"> (PDF, opens in a new tab)</span></a>
+    </div>
+
+
+    <div class="page-head">
+      <h1>ASL recognition app</h1>
+      <p class="lede">A web app that recognizes American Sign Language in a live video feed and shows the matching letter or word on screen. Built for the Congressional App Challenge, District NJ-01.</p>
+      <div class="meta">
+        <span class="mono">Nov 2024</span>
+        <ul class="tags" aria-label="Stack"><li>YOLOv8</li><li>Roboflow</li><li>Computer vision</li><li>Web app</li></ul>
+      </div>
+    </div>
+    <figure class="band-figure" aria-labelledby="ml-cap">
+      <p class="cap"><span id="ml-cap">From sign images to live recognition</span><span>Model pipeline</span></p>
+      <ol class="flow">
+        <li class="lane"><span class="lane-label">Data</span><div class="grow"><div class="node"><b>Sign images</b><span>collected and prepared</span></div></div></li>
+        <li class="lane"><span class="lane-label">Label</span><div class="grow"><div class="node"><b>Annotation</b><span>bounding boxes in Roboflow</span></div></div></li>
+        <li class="lane"><span class="lane-label">Train</span><div class="grow"><div class="node hot"><b>YOLOv8</b><span>custom object detection model</span></div></div></li>
+        <li class="lane"><span class="lane-label">Deploy</span><div class="grow"><div class="node"><b>Web app</b><span>live video feed</span></div></div></li>
+        <li class="lane"><span class="lane-label">Output</span><div class="grow"><div class="node out"><b>Letter or word</b><span>shown on screen</span></div></div></li>
+      </ol>
+      <p class="node" style="margin-top:1.5rem"><span class="mono">feedback loop</span><span>Testing with members of the Deaf community fed back into the dataset and the model.</span></p>
+    </figure>
+  </div>
+</header>
+
+<main id="main" class="wrap">
+
+<section aria-labelledby="did-h">
+  <div class="split">
+    <div>
+      <h2 class="sec-title" id="did-h">What I did</h2>
+      <p class="sec-lede">I owned the model end to end, from raw images to a working app.</p>
+    </div>
+    <ul class="points">
+      <li><strong>Prepared and annotated</strong> the full image dataset in Roboflow.</li>
+      <li><strong>Trained</strong> a custom YOLOv8 object detection model on it.</li>
+      <li><strong>Deployed</strong> the model in a web app that detects signs in live video.</li>
+      <li><strong>Tested with Deaf community members</strong> and refined the model to meet real accessibility needs.</li>
+    </ul>
+  </div>
+</section>
+
+<nav class="pager" aria-label="Projects">
+  <a href="/cloud/"><span>Previous project</span><b>← Cloud misconfiguration lab</b></a>
+  <a class="next" href="/experience/"><span>Next</span><b>Experience →</b></a>
+</nav>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-in">
+      <div>
+        <h2>Let’s talk.</h2>
+        <p>Open to Summer 2027 security internships.</p>
+        <a class="mail" href="mailto:aswinsureshche@gmail.com">aswinsureshche@gmail.com</a>
+      </div>
+      <div class="links">
+        <a href="https://www.linkedin.com/in/aswinsuresh473/" target="_blank" rel="noopener noreferrer"><svg class="i" aria-hidden="true"><use href="#i-linkedin"/></svg>LinkedIn</a>
+        <a href="https://github.com/aswinsureshche" target="_blank" rel="noopener noreferrer"><svg class="i" aria-hidden="true"><use href="#i-github"/></svg>GitHub</a>
+        <a href="/Aswin_Suresh_Resume.pdf" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-file"/></svg>Résumé</a>
+      </div>
+    </div>
+    <div class="fine"><span>© 2026 Aswin Suresh · West Lafayette, IN</span><span>Updated November 2026</span></div>
+  </div>
+</footer>
+</body>
+</html>

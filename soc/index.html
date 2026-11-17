@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; script-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Home SOC / SIEM lab · Aswin Suresh</title>
+<meta name="description" content="Wazuh SIEM and Suricata NIDS home lab with 11 custom detection rules across 8 MITRE ATT&amp;CK techniques and a Python incident correlation engine.">
+<meta name="theme-color" content="#151a26">
+<link rel="canonical" href="https://aswinsuresh.us.com/soc/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Home SOC / SIEM lab · Aswin Suresh">
+<meta property="og:description" content="Wazuh SIEM and Suricata NIDS home lab with 11 custom detection rules across 8 MITRE ATT&amp;CK techniques and a Python incident correlation engine.">
+<meta property="og:url" content="https://aswinsuresh.us.com/soc/">
+<meta property="og:image" content="https://aswinsuresh.us.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Aswin Suresh, Cybersecurity. Detection engineering and cloud security.">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" href="/fonts/newsreader.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/public-sans.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-github" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></symbol>
+  <symbol id="i-linkedin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></symbol>
+  <symbol id="i-file" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M12 18v-6"/><path d="m9 15 3 3 3-3"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+</svg>
+
+<header class="band">
+  <div class="wrap">
+    <div class="mast">
+      <a class="mark" href="/">Aswin Suresh</a>
+      <nav class="tabs" aria-label="Site">
+        <a href="/">Overview</a>
+        <a href="/soc/" aria-current="page">SOC<span class="long"> lab</span></a>
+        <a href="/cloud/">Cloud<span class="long"> lab</span></a>
+        <a href="/asl/">ASL<span class="long"> app</span></a>
+        <a href="/experience/">Experience</a>
+      </nav>
+      <a class="mast-cta" href="/Aswin_Suresh_Resume.pdf" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-file"/></svg>Résumé<span class="sr"> (PDF, opens in a new tab)</span></a>
+    </div>
+
+
+    <div class="page-head">
+      <h1>Home SOC / SIEM lab</h1>
+      <p class="lede">A security operations center on an isolated lab network. Host logs and network traffic flow into a Wazuh SIEM, custom rules catch each attack stage, and a Python engine turns the alerts into incident reports.</p>
+      <div class="meta">
+        <span class="mono">2026</span>
+        <ul class="tags" aria-label="Stack"><li>Wazuh</li><li>Suricata</li><li>Sysmon</li><li>Python</li><li>Docker</li><li>Metasploit</li></ul>
+        <a href="https://github.com/aswinsureshche/home-soc-siem-lab" target="_blank" rel="noopener noreferrer"><svg class="i" aria-hidden="true"><use href="#i-github"/></svg>View source</a>
+      </div>
+    </div>
+    <figure class="band-figure" aria-labelledby="arch-cap">
+      <p class="cap"><span id="arch-cap">Architecture: telemetry in, incidents out</span><span>Isolated lab network</span></p>
+      <ol class="flow">
+        <li class="lane"><span class="lane-label">Attacker</span><div class="grow">
+          <div class="node"><b>Attacker box</b><span>Nmap, Metasploit</span><span class="mono">private IPs only</span></div>
+        </div></li>
+        <li class="lane"><span class="lane-label">Monitored</span><div class="grow">
+          <div class="node"><b>Windows Server</b><span>Sysmon + Wazuh agent</span></div>
+          <div class="node"><b>Nutanix AHV</b><span>syslog, Prism alerts</span></div>
+          <div class="node"><b>Suricata NIDS</b><span>span port, eve.json</span></div>
+        </div></li>
+        <li class="lane"><span class="lane-label">SIEM VM in Docker</span><div class="grow">
+          <div class="node hot"><b>Wazuh Manager</b><span>11 custom rules + decoder</span></div>
+          <div class="node"><b>Wazuh Indexer</b><span>OpenSearch</span></div>
+          <div class="node"><b>Wazuh Dashboard</b></div>
+        </div></li>
+        <li class="lane"><span class="lane-label">Python tooling</span><div class="grow">
+          <div class="node"><b>correlate.py</b><span>reads alerts over the REST API</span></div>
+          <div class="node out"><b>Incident report</b><span>Markdown or PDF</span></div>
+        </div></li>
+      </ol>
+    </figure>
+  </div>
+</header>
+
+<main id="main" class="wrap">
+
+<section aria-labelledby="why-h">
+  <div class="split">
+    <div>
+      <h2 class="sec-title" id="why-h">Why add a network sensor</h2>
+      <p class="sec-lede">Wazuh catches brute force, lateral movement and process attacks once they touch a monitored host. But a plain Nmap SYN scan writes nothing to the Windows event log, so a host-only setup never sees the recon. Suricata on a span port closes that gap.</p>
+    </div>
+    <div style="display:grid;gap:1.75rem">
+      <figure>
+        <ol class="flow light" aria-label="Host-only monitoring">
+          <li class="lane"><span class="lane-label">Host only</span><div class="grow"><div class="node"><b>Nmap SYN scan</b></div></div></li>
+          <li class="lane"><span class="lane-label">&nbsp;</span><div class="grow"><div class="node"><b>Windows Server</b></div></div></li>
+          <li class="lane"><span class="lane-label">&nbsp;</span><div class="grow"><div class="node out"><b>Nothing logged</b><span>scan is invisible</span></div></div></li>
+        </ol>
+      </figure>
+      <figure>
+        <ol class="flow light" aria-label="With the network sensor">
+          <li class="lane"><span class="lane-label">With Suricata</span><div class="grow"><div class="node"><b>Nmap SYN scan</b></div></div></li>
+          <li class="lane"><span class="lane-label">&nbsp;</span><div class="grow"><div class="node"><b>Suricata</b><span>8+ scan alerts in 60s</span></div></div></li>
+          <li class="lane"><span class="lane-label">&nbsp;</span><div class="grow"><div class="node hot"><b>Rule 100011</b><span class="mono">level 10 · T1046</span></div></div></li>
+        </ol>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="rules-h">
+  <h2 class="sec-title" id="rules-h">Detection rules</h2>
+  <p class="sec-lede">All 11 rules in <code class="mono">local_rules.xml</code>, ordered from recon to exploitation. Bar length is the Wazuh alert level, 0 to 15.</p>
+  <div class="table-scroll">
+  <table class="data">
+    <thead><tr><th scope="col">Rule</th><th scope="col">Level</th><th scope="col">Detects</th><th scope="col">ATT&amp;CK</th></tr></thead>
+    <tbody>
+      <tr><td class="mono">100010</td><td><span class="sev" style="--l:0"><i></i>0</span></td><td>Suricata low-priority anomaly (base rule, no alert)</td><td class="mono"></td></tr>
+      <tr><td class="mono">100011</td><td><span class="sev" style="--l:10"><i></i>10</span></td><td>Port scan: 8+ Suricata scan alerts from one source in 60s</td><td class="mono">T1046</td></tr>
+      <tr><td class="mono">100012</td><td><span class="sev" style="--l:10"><i></i>10</span></td><td>Port scan by signature: 8+ scan signatures in 60s</td><td class="mono">T1046</td></tr>
+      <tr><td class="mono">100013</td><td><span class="sev" style="--l:3"><i></i>3</span></td><td>Windows Firewall dropped a connection</td><td class="mono"></td></tr>
+      <tr><td class="mono">100014</td><td><span class="sev" style="--l:10"><i></i>10</span></td><td>Port scan via firewall: 15+ distinct blocked connections</td><td class="mono">T1046</td></tr>
+      <tr><td class="mono">100020</td><td><span class="sev" style="--l:10"><i></i>10</span></td><td>Brute force: 6+ failed logons (4625) from one source in 120s</td><td class="mono">T1110</td></tr>
+      <tr><td class="mono">100021</td><td><span class="sev high" style="--l:12"><i></i>12</span></td><td>Brute force followed by a successful logon (4624)</td><td class="mono">T1110 T1078</td></tr>
+      <tr><td class="mono">100030</td><td><span class="sev high" style="--l:13"><i></i>13</span></td><td>Suspicious process access to LSASS</td><td class="mono">T1003</td></tr>
+      <tr><td class="mono">100031</td><td><span class="sev high" style="--l:12"><i></i>12</span></td><td>Encoded or hidden PowerShell execution</td><td class="mono">T1059.001 T1027</td></tr>
+      <tr><td class="mono">100032</td><td><span class="sev high" style="--l:12"><i></i>12</span></td><td>New service installed from a temp path</td><td class="mono">T1543.003 T1021</td></tr>
+      <tr><td class="mono">100040</td><td><span class="sev high" style="--l:15"><i></i>15</span></td><td><strong>Multi-stage attack</strong>: brute force, then exploitation, same IP</td><td class="mono">T1110 T1003</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section aria-labelledby="chain-h">
+  <h2 class="sec-title" id="chain-h">The kill-chain rule</h2>
+  <p class="sec-lede">Rule 100040 only fires when one IP completes the chain: a brute force that succeeds, then exploitation-stage activity within 15 minutes.</p>
+  <figure>
+    <ol class="flow light">
+      <li class="lane"><span class="lane-label">Brute force</span><div class="grow"><div class="node"><span class="mono">100020</span><b>6+ failed logons</b><span>within 120 seconds</span></div></div></li>
+      <li class="lane"><span class="lane-label">Access</span><div class="grow"><div class="node"><span class="mono">100021</span><b>Then a successful logon</b><span>same source</span></div></div></li>
+      <li class="lane"><span class="lane-label">Any of, within 900s</span><div class="grow">
+        <div class="node"><span class="mono">100030</span><b>LSASS access</b></div>
+        <div class="node"><span class="mono">100031</span><b>Encoded PowerShell</b></div>
+        <div class="node"><span class="mono">100032</span><b>Suspicious service</b></div>
+      </div></li>
+      <li class="lane"><span class="lane-label">Alert</span><div class="grow"><div class="node hot"><span class="mono">100040 · level 15</span><b>Multi-stage attack</b><span>from $(srcip)</span></div></div></li>
+    </ol>
+  </figure>
+  <div class="split" style="margin-top:2.5rem">
+    <pre class="panel" aria-label="Wazuh rule 100040"><code><span class="c">&lt;!-- local_rules.xml --&gt;</span>
+<span class="t">&lt;rule</span> id="100040" level="15" timeframe="900"<span class="t">&gt;</span>
+  <span class="t">&lt;if_matched_sid&gt;</span>100021<span class="t">&lt;/if_matched_sid&gt;</span>
+  <span class="t">&lt;if_sid&gt;</span>100030,100031,100032<span class="t">&lt;/if_sid&gt;</span>
+  <span class="t">&lt;same_source_ip /&gt;</span>
+  <span class="t">&lt;description&gt;</span>Multi-stage attack
+    from $(srcip)<span class="t">&lt;/description&gt;</span>
+  <span class="t">&lt;mitre&gt;&lt;id&gt;</span>T1110<span class="t">&lt;/id&gt;&lt;id&gt;</span>T1003<span class="t">&lt;/id&gt;&lt;/mitre&gt;</span>
+<span class="t">&lt;/rule&gt;</span></code></pre>
+    <ul class="points">
+      <li><strong>Chained, not counted.</strong> Single alerts are noisy; requiring the sequence cuts false positives.</li>
+      <li><strong>Same source.</strong> <code class="mono">same_source_ip</code> keeps two unrelated events from combining.</li>
+      <li><strong>Bounded window.</strong> A 900-second window keeps the chain tied to one intrusion.</li>
+    </ul>
+  </div>
+</section>
+
+<section aria-labelledby="corr-h">
+  <h2 class="sec-title" id="corr-h">From alerts to an incident report</h2>
+  <p class="sec-lede">The correlation engine rebuilds the same story from raw alerts, independently of rule 100040, and writes it up.</p>
+  <ol class="steps">
+    <li><b>Pull alerts</b><span>Wazuh Indexer REST API</span><span class="mono">wazuh_api_client.py</span></li>
+    <li><b>Group by source IP</b><span>one attacker per incident</span><span class="mono">correlate.py</span></li>
+    <li><b>Window by time</b><span>events close together</span><span class="mono">correlate.py</span></li>
+    <li><b>Tag attack stage</b><span>recon, brute force, exploitation</span><span class="mono">correlate.py</span></li>
+    <li><b>Write the report</b><span>Markdown or PDF</span><span class="mono">generate_report.py</span></li>
+  </ol>
+</section>
+
+<section aria-labelledby="safe-h">
+  <h2 class="sec-title" id="safe-h">Safety rails</h2>
+  <ul class="points" style="margin-top:1.25rem;max-width:66ch">
+    <li>Attack scripts refuse any target outside private (RFC 1918) address space and ask for confirmation before firing.</li>
+    <li>Metasploit runs only scanner modules and lab-only exploits against Metasploitable, never production software.</li>
+    <li>The Python tooling is read-only against the Wazuh API.</li>
+  </ul>
+</section>
+
+<nav class="pager" aria-label="Projects">
+  <a class="next" href="/cloud/"><span>Next project</span><b>Cloud misconfiguration lab →</b></a>
+</nav>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-in">
+      <div>
+        <h2>Let’s talk.</h2>
+        <p>Open to Summer 2027 security internships.</p>
+        <a class="mail" href="mailto:aswinsureshche@gmail.com">aswinsureshche@gmail.com</a>
+      </div>
+      <div class="links">
+        <a href="https://www.linkedin.com/in/aswinsuresh473/" target="_blank" rel="noopener noreferrer"><svg class="i" aria-hidden="true"><use href="#i-linkedin"/></svg>LinkedIn</a>
+        <a href="https://github.com/aswinsureshche" target="_blank" rel="noopener noreferrer"><svg class="i" aria-hidden="true"><use href="#i-github"/></svg>GitHub</a>
+        <a href="/Aswin_Suresh_Resume.pdf" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-file"/></svg>Résumé</a>
+      </div>
+    </div>
+    <div class="fine"><span>© 2026 Aswin Suresh · West Lafayette, IN</span><span>Updated November 2026</span></div>
+  </div>
+</footer>
+</body>
+</html>

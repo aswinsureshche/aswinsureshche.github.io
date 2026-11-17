@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; script-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Cloud misconfiguration lab · Aswin Suresh</title>
+<meta name="description" content="AWS lab in Terraform with four deliberate misconfigurations, toggled vulnerable or hardened by one variable, mapped to CIS and MITRE ATT&amp;CK and scanned with Prowler and ScoutSuite.">
+<meta name="theme-color" content="#151a26">
+<link rel="canonical" href="https://aswinsuresh.us.com/cloud/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Cloud misconfiguration lab · Aswin Suresh">
+<meta property="og:description" content="AWS lab in Terraform with four deliberate misconfigurations, toggled vulnerable or hardened by one variable, mapped to CIS and MITRE ATT&amp;CK and scanned with Prowler and ScoutSuite.">
+<meta property="og:url" content="https://aswinsuresh.us.com/cloud/">
+<meta property="og:image" content="https://aswinsuresh.us.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Aswin Suresh, Cybersecurity. Detection engineering and cloud security.">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" href="/fonts/newsreader.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/public-sans.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-github" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></symbol>
+  <symbol id="i-linkedin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></symbol>
+  <symbol id="i-file" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M12 18v-6"/><path d="m9 15 3 3 3-3"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+</svg>
+
+<header class="band">
+  <div class="wrap">
+    <div class="mast">
+      <a class="mark" href="/">Aswin Suresh</a>
+      <nav class="tabs" aria-label="Site">
+        <a href="/">Overview</a>
+        <a href="/soc/">SOC<span class="long"> lab</span></a>
+        <a href="/cloud/" aria-current="page">Cloud<span class="long"> lab</span></a>
+        <a href="/asl/">ASL<span class="long"> app</span></a>
+        <a href="/experience/">Experience</a>
+      </nav>
+      <a class="mast-cta" href="/Aswin_Suresh_Resume.pdf" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-file"/></svg>Résumé<span class="sr"> (PDF, opens in a new tab)</span></a>
+    </div>
+
+
+    <div class="page-head">
+      <h1>Cloud misconfiguration lab</h1>
+      <p class="lede">An AWS environment in Terraform with four deliberate security flaws. One variable, <code class="mono">harden</code>, flips every resource between vulnerable and hardened, so the same scanners can measure the difference.</p>
+      <div class="meta">
+        <span class="mono">2026</span>
+        <ul class="tags" aria-label="Stack"><li>AWS</li><li>Terraform</li><li>Prowler</li><li>ScoutSuite</li><li>Python</li><li>Bash</li></ul>
+        <a href="https://github.com/aswinsureshche/cloud-misconfig-lab" target="_blank" rel="noopener noreferrer"><svg class="i" aria-hidden="true"><use href="#i-github"/></svg>View source</a>
+      </div>
+    </div>
+    <figure class="band-figure" aria-labelledby="diff-cap">
+      <p class="cap"><span id="diff-cap">What one variable changes, resource by resource</span><span>From the Terraform source</span></p>
+      <div class="diff">
+        <div class="diff-row diff-head"><span>Resource</span><span class="bad-h mono">harden = false · vulnerable</span><span class="good-h mono">harden = true · hardened</span></div>
+        <div class="diff-row">
+          <h3>S3 bucket<span>s3.tf</span></h3>
+          <div class="bad"><p class="diff-tag">vulnerable</p><ul><li>ACL public-read</li><li>Public access block off</li><li>No default encryption</li><li>Versioning suspended</li></ul></div>
+          <div class="good"><p class="diff-tag">hardened</p><ul><li>ACL private</li><li>All 4 public access blocks on</li><li>Server-side encryption on</li><li>Versioning enabled</li></ul></div>
+        </div>
+        <div class="diff-row">
+          <h3>IAM policy<span>iam.tf</span></h3>
+          <div class="bad"><p class="diff-tag">vulnerable</p><ul><li>Action "*"</li><li>Resource "*"</li></ul></div>
+          <div class="good"><p class="diff-tag">hardened</p><ul><li>s3:GetObject, s3:ListBucket</li><li>One bucket ARN only</li></ul></div>
+        </div>
+        <div class="diff-row">
+          <h3>Security group<span>network.tf</span></h3>
+          <div class="bad"><p class="diff-tag">vulnerable</p><ul><li>tcp/22 from 0.0.0.0/0</li></ul></div>
+          <div class="good"><p class="diff-tag">hardened</p><ul><li>tcp/22 from trusted_cidr only</li></ul></div>
+        </div>
+        <div class="diff-row">
+          <h3>EBS snapshot<span>ebs.tf</span></h3>
+          <div class="bad"><p class="diff-tag">vulnerable</p><ul><li>Shared publicly</li><li>Volume unencrypted</li></ul></div>
+          <div class="good"><p class="diff-tag">hardened</p><ul><li>Public share removed</li><li>Volume encrypted</li></ul></div>
+        </div>
+      </div>
+    </figure>
+  </div>
+</header>
+
+<main id="main" class="wrap">
+
+<section aria-labelledby="map-h">
+  <h2 class="sec-title" id="map-h">Threat mapping</h2>
+  <p class="sec-lede">Each flaw tied to the CIS AWS Foundations Benchmark area it breaks and the ATT&amp;CK technique it enables.</p>
+  <div class="table-scroll">
+  <table class="data">
+    <thead><tr><th scope="col">Misconfiguration</th><th scope="col">CIS area</th><th scope="col">ATT&amp;CK</th><th scope="col">What an attacker gets</th></tr></thead>
+    <tbody>
+      <tr><td>Public S3 bucket</td><td>S3 public access, encryption</td><td class="mono">T1530</td><td>Reads the bucket anonymously</td></tr>
+      <tr><td>Wildcard IAM policy</td><td>IAM least privilege</td><td class="mono">T1078.004</td><td>One leaked credential becomes full admin</td></tr>
+      <tr><td>SSH open to the internet</td><td>Security group ingress</td><td class="mono">T1133</td><td>A login prompt reachable from anywhere</td></tr>
+      <tr><td>Public EBS snapshot</td><td>Storage sharing, exposure</td><td class="mono">T1530</td><td>Restores the disk in their own account</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section aria-labelledby="loop-h">
+  <h2 class="sec-title" id="loop-h">Scan, harden, re-scan</h2>
+  <p class="sec-lede">The same two scanners run against both states, and a script compares the reports.</p>
+  <ol class="steps">
+    <li><b>Deploy vulnerable</b><span>baseline state</span><span class="mono">harden=false</span></li>
+    <li><b>Scan</b><span>Prowler + ScoutSuite</span><span class="mono">run_prowler.sh</span></li>
+    <li><b>Harden</b><span>same resources, fixed</span><span class="mono">harden=true</span></li>
+    <li><b>Re-scan</b><span>same checks</span><span class="mono">run_scoutsuite.sh</span></li>
+    <li><b>Compare</b><span>which findings closed, which remain</span><span class="mono">compare_reports.py</span></li>
+    <li><b>Tear down</b><span>and verify nothing is left</span><span class="mono">verify_teardown.sh</span></li>
+  </ol>
+</section>
+
+<section aria-labelledby="cost-h">
+  <div class="split">
+    <div>
+      <h2 class="sec-title" id="cost-h">Cost guardrail</h2>
+      <p class="sec-lede">An AWS Budgets alarm emails at 80% and 100% of a monthly limit, so a forgotten lab can’t run up a bill. The limit is a variable, $5 by default.</p>
+    </div>
+    <figure>
+      <div class="meter" role="img" aria-label="Budget scale from $0 to $5 with alerts at $4 and $5">
+        <span class="mk" style="--x:0%"><span class="dn">$0</span></span>
+        <span class="mk" style="--x:80%"><span class="up l">Alert at 80%</span><span class="dn">$4</span></span>
+        <span class="mk end"><span class="up">Alert at 100%</span><span class="dn">$5</span></span>
+      </div>
+      <figcaption>Monthly AWS Budgets limit, from <code class="mono">budget.tf</code>.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<nav class="pager" aria-label="Projects">
+  <a href="/soc/"><span>Previous project</span><b>← Home SOC / SIEM lab</b></a>
+  <a class="next" href="/asl/"><span>Next project</span><b>ASL recognition app →</b></a>
+</nav>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-in">
+      <div>
+        <h2>Let’s talk.</h2>
+        <p>Open to Summer 2027 security internships.</p>
+        <a class="mail" href="mailto:aswinsureshche@gmail.com">aswinsureshche@gmail.com</a>
+      </div>
+      <div class="links">
+        <a href="https://www.linkedin.com/in/aswinsuresh473/" target="_blank" rel="noopener noreferrer"><svg class="i" aria-hidden="true"><use href="#i-linkedin"/></svg>LinkedIn</a>
+        <a href="https://github.com/aswinsureshche" target="_blank" rel="noopener noreferrer"><svg class="i" aria-hidden="true"><use href="#i-github"/></svg>GitHub</a>
+        <a href="/Aswin_Suresh_Resume.pdf" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-file"/></svg>Résumé</a>
+      </div>
+    </div>
+    <div class="fine"><span>© 2026 Aswin Suresh · West Lafayette, IN</span><span>Updated November 2026</span></div>
+  </div>
+</footer>
+</body>
+</html>
