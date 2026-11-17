@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; script-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; script-src 'none'; object-src 'none'; base-uri 'none'; form-action 'self' https://api.web3forms.com">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Cloud misconfiguration lab · Aswin Suresh</title>
 <meta name="description" content="AWS lab in Terraform with four deliberate misconfigurations, toggled vulnerable or hardened by one variable, mapped to CIS and MITRE ATT&amp;CK and scanned with Prowler and ScoutSuite.">
@@ -143,17 +143,28 @@
 
 <footer class="foot">
   <div class="wrap">
-    <div class="foot-in">
-      <div>
-        <h2>Let’s talk.</h2>
-        <p>Open to Summer 2027 security internships.</p>
-        <a class="mail" href="mailto:aswinsureshche@gmail.com">aswinsureshche@gmail.com</a>
+    <div class="foot-in" id="contact">
+      <div class="foot-copy">
+        <h2>Get in touch</h2>
+        <p>Hiring for a security internship, or want to talk about one of these projects? Send a note and it comes straight to my inbox.</p>
+        <div class="links">
+          <a href="https://www.linkedin.com/in/aswinsuresh473/" target="_blank" rel="noopener noreferrer"><svg class="i" aria-hidden="true"><use href="#i-linkedin"/></svg>LinkedIn</a>
+          <a href="https://github.com/aswinsureshche" target="_blank" rel="noopener noreferrer"><svg class="i" aria-hidden="true"><use href="#i-github"/></svg>GitHub</a>
+          <a href="/Aswin_Suresh_Resume.pdf" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-file"/></svg>Résumé</a>
+        </div>
       </div>
-      <div class="links">
-        <a href="https://www.linkedin.com/in/aswinsuresh473/" target="_blank" rel="noopener noreferrer"><svg class="i" aria-hidden="true"><use href="#i-linkedin"/></svg>LinkedIn</a>
-        <a href="https://github.com/aswinsureshche" target="_blank" rel="noopener noreferrer"><svg class="i" aria-hidden="true"><use href="#i-github"/></svg>GitHub</a>
-        <a href="/Aswin_Suresh_Resume.pdf" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-file"/></svg>Résumé</a>
-      </div>
+      <form class="contact-form" action="https://api.web3forms.com/submit" method="POST" aria-label="Contact form">
+        <input type="hidden" name="access_key" value="87a8343b-cccd-4882-8a6f-680807763bba">
+        <input type="hidden" name="subject" value="New message from aswinsuresh.us.com">
+        <input type="hidden" name="from_name" value="aswinsuresh.us.com">
+        <input type="hidden" name="redirect" value="https://aswinsuresh.us.com/thanks/">
+        <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <div class="field"><label for="cf-name">Name</label><input id="cf-name" name="name" type="text" autocomplete="name" required maxlength="100"></div>
+        <div class="field"><label for="cf-email">Email</label><input id="cf-email" name="email" type="email" autocomplete="email" required maxlength="200"></div>
+        <div class="field wide"><label for="cf-org">Company or school <span>optional</span></label><input id="cf-org" name="company" type="text" autocomplete="organization" maxlength="150"></div>
+        <div class="field wide"><label for="cf-msg">Message</label><textarea id="cf-msg" name="message" rows="5" required maxlength="5000"></textarea></div>
+        <button class="btn primary wide" type="submit">Send message</button>
+      </form>
     </div>
     <div class="fine"><span>© 2026 Aswin Suresh · West Lafayette, IN</span><span>Updated November 2026</span></div>
   </div>
